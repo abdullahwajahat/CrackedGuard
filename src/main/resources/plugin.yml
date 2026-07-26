@@ -1,0 +1,25 @@
+name: CrackedGuard
+version: '1.0.0'
+main: com.example.crackedguard.CrackedGuard
+api-version: '1.20'
+author: YourName
+description: >
+  Detects cracked / Bedrock players, tags their names, blocks cracked players
+  from having OP or running restricted commands, and announces restarts to
+  Discord via DiscordSRV.
+softdepend: [DiscordSRV, floodgate]
+
+commands:
+  cgexcept:
+    description: Manage the list of cracked players exempt from OP/command restrictions
+    usage: "/<command> <add|remove|list> [player]"
+    permission: crackedguard.admin
+  cgnotify:
+    description: Manually send the restart notification to Discord via DiscordSRV
+    usage: "/<command>"
+    permission: crackedguard.admin
+
+permissions:
+  crackedguard.admin:
+    description: Allows management of the CrackedGuard plugin
+    default: op
