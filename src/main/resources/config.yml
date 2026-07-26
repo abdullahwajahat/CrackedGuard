@@ -1,0 +1,44 @@
+# =========================================================
+#                     CrackedGuard config
+# =========================================================
+
+# Player names (case-insensitive) that are NEVER kicked for being
+# a cracked player with OP, and are ALWAYS allowed to run
+# "restricted-commands" below, even though they are on a cracked/
+# offline-mode account.
+#
+# Manage this list in-game with:
+#   /cgexcept add <player>
+#   /cgexcept remove <player>
+#   /cgexcept list
+exceptions:
+  - "exampleplayer"
+
+# Base commands (no leading "/") that cracked players are NOT allowed
+# to run. Matching is case-insensitive and ignores a "plugin:" prefix
+# (e.g. "essentials:gamemode" still matches "gamemode").
+restricted-commands:
+  - op
+  - deop
+  - stop
+  - ban
+  - ban-ip
+  - pardon
+  - pardon-ip
+  - whitelist
+  - kick
+  - gamemode
+  - reload
+  - plugins
+  - pl
+  - restart
+
+kick-messages:
+  op-kick: "&cCracked/offline-mode accounts are not allowed to have OP on this server."
+  command-kick: "&cThat command is not available to cracked accounts."
+
+discord:
+  # If true, a message is sent to DiscordSRV's main channel whenever this
+  # plugin is disabled (i.e. on server stop/restart).
+  enabled: true
+  restart-message: "Server is Restarting"
