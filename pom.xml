@@ -25,11 +25,6 @@
             <id>sonatype</id>
             <url>https://oss.sonatype.org/content/groups/public/</url>
         </repository>
-        <!-- DiscordSRV + JDA -->
-        <repository>
-            <id>jitpack.io</id>
-            <url>https://jitpack.io</url>
-        </repository>
         <!-- Floodgate -->
         <repository>
             <id>opencollab-repository-maven-releases</id>
@@ -50,27 +45,10 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- DiscordSRV (soft-depend, compile-only) -->
-        <dependency>
-            <groupId>com.github.DiscordSRV</groupId>
-            <artifactId>DiscordSRV</artifactId>
-            <version>master</version>
-            <scope>provided</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>*</groupId>
-                    <artifactId>*</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-
-        <!-- JDA is needed to compile against DiscordSRV's TextChannel type -->
-        <dependency>
-            <groupId>net.dv8tion</groupId>
-            <artifactId>JDA</artifactId>
-            <version>5.0.0-beta.20</version>
-            <scope>provided</scope>
-        </dependency>
+        <!-- NOTE: DiscordSRV is intentionally NOT a compile dependency.
+             DiscordHook talks to it via reflection at runtime instead, so we
+             avoid depending on JitPack building DiscordSRV from source (slow,
+             version-fragile) and avoid needing to pin a matching JDA version. -->
 
         <!-- Floodgate API (soft-depend, compile-only) -->
         <dependency>
